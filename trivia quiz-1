@@ -1,0 +1,168 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMg2XmPenCvM6dHPCHbzm0k",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/papporica123/ai-games/blob/main/trivia%20quiz-1\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Gm7MewZ8Hruo",
+        "outputId": "9f07b13e-660e-424f-f278-538040829215"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Question 1: American illustrator and writer Maurice Sendak is most well-known for writing which children&#039;s book?\n",
+            "1. Charlie and the Chocolate Factory\n",
+            "2. The Cat in the Hat\n",
+            "3. The Neverending Story\n",
+            "4. Where The Wild Things Are\n",
+            "Your answer (1/2/3/4): 1\n",
+            "Wrong! The correct answer was: Where The Wild Things Are\n",
+            "\n",
+            "\n",
+            "Question 2: What was the nickname given to the Hughes H-4 Hercules, a heavy transport flying boat which achieved flight in 1947?\n",
+            "1. Fat Man\n",
+            "2. Noah&#039;s Ark\n",
+            "3. Spruce Goose\n",
+            "4. Trojan Horse\n",
+            "Your answer (1/2/3/4): 4\n",
+            "Wrong! The correct answer was: Spruce Goose\n",
+            "\n",
+            "\n",
+            "Question 3: Which animation studio animated &quot;Hidamari Sketch&quot;?\n",
+            "1. Kyoto Animation\n",
+            "2. Production I.G\n",
+            "3. Shaft\n",
+            "4. Trigger\n",
+            "Your answer (1/2/3/4): 2\n",
+            "Wrong! The correct answer was: Shaft\n",
+            "\n",
+            "\n",
+            "Question 4: How many different notes is the tune, &quot;Song of Healing&quot;, comprised of in &quot;The Legend of Zelda: Majora&#039;s Mask&quot;?\n",
+            "1. 1\n",
+            "2. 3\n",
+            "3. 4\n",
+            "4. 6\n"
+          ]
+        }
+      ],
+      "source": [
+        "import requests\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "url = \"https://opentdb.com/api.php?amount=10&type=multiple\"\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "response = requests.get(url)\n",
+        "\n",
+        "\n",
+        "if response.status_code == 200:\n",
+        "\n",
+        "    trivia_data = response.json()\n",
+        "\n",
+        "    score = 0\n",
+        "\n",
+        "\n",
+        "\n",
+        "    for i, question_data in enumerate(trivia_data[\"results\"]):\n",
+        "\n",
+        "        print(f\"Question {i + 1}: {question_data['question']}\")\n",
+        "\n",
+        "        options = question_data['incorrect_answers'] + [question_data['correct_answer']]  # Add correct answer to options\n",
+        "\n",
+        "        options = sorted(options)\n",
+        "\n",
+        "        for j, option in enumerate(options):\n",
+        "\n",
+        "            print(f\"{j + 1}. {option}\")\n",
+        "\n",
+        "\n",
+        "\n",
+        "        user_answer = input(\"Your answer (1/2/3/4): \")\n",
+        "\n",
+        "\n",
+        "\n",
+        "        if options[int(user_answer) - 1] == question_data[\"correct_answer\"]:\n",
+        "\n",
+        "            print(\"Correct!\")\n",
+        "\n",
+        "            score += 1\n",
+        "\n",
+        "        else:\n",
+        "\n",
+        "            print(f\"Wrong! The correct answer was: {question_data['correct_answer']}\")\n",
+        "\n",
+        "\n",
+        "\n",
+        "        print(\"\\n\")\n",
+        "\n",
+        "\n",
+        "\n",
+        "    print(f\"Your final score: {score}/{len(trivia_data['results'])}\")\n",
+        "\n",
+        "\n",
+        "\n",
+        "else:\n",
+        "\n",
+        "    print(\"Failed to retrieve trivia\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import requests\n",
+        "import random\n",
+        "import html\n",
+        "EDUCATION_CATEGORY_ID=9\n",
+        "API_URL=f\"https://opendb.com/api.php:?amount=10&category={EDUCATION_CATEGORY_ID}&type=multiple\"\n",
+        "def get_education_question()\n",
+        "  response=requests.get(API_URL)\n",
+        "  if response.status_code==200:\n",
+        "    print(\"Failed to fetch educational questions\")\n",
+        "\n",
+        "  score=0\n",
+        "  print(\"welcome to th education quiz!\\n\")"
+      ],
+      "metadata": {
+        "id": "ihyCjRgPIDpE"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
